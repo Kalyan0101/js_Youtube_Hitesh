@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li style="background-color: hotpink; font-size: 2rem;">JavaScript</li>
+    </ul>
+</body>
+<script>
+    addlanguage("PYTHON")
+    addlanguage("JAVA")
+    addlanguage("C")
+    function addlanguage(langName){
+        const ul = document.querySelector(".language");
+        const li = document.createElement("li");
+        li.innerHTML = `${langName}`
+        li.style.backgroundColor = "orange"
+        li.style.fontSize = "2rem"
+        li.style.padding = "10px"
+        li.style.borderTop = "2px solid"
+
+        ul.appendChild(li)
+        // console.log(ul);
+        // console.log(li);
+    }
+
+// more OPTIMIZED way
+    addOptLang("TYPESCRIPT")
+    addOptLang("C++")
+    function addOptLang(langName){
+        const li = document.createElement("li");
+        li.style.backgroundColor = "pink"
+        li.style.fontSize = "2rem"
+        li.style.padding = "10px"
+        li.style.borderTop = "2px solid hotpink"
+
+        li.appendChild(document.createTextNode(langName))
+
+        document.querySelector(".language").appendChild(li)
+    }
+
+// EDIT an element
+    const second = document.querySelector("li:nth-child(2)")
+// first approch
+    // second.innerHTML = "MOJO"
+
+// Second approch OPTIMIZED
+edit("MOJO")
+function edit(langName){
+    const newLi = document.createElement("li"); // create an element
+    newLi.style.backgroundColor = "green"
+    newLi.style.fontSize = "2rem"
+    newLi.style.padding = "10px"
+    newLi.style.border = "1px dashed"
+
+    const text = document.createTextNode(langName); // define element value
+    newLi.appendChild(text) // marge element and value together
+
+    second.replaceWith(newLi) // replace the new node with the selected one
+}
+
+// REMOVE an element
+    const last =  document.querySelector(".language li:last-child");
+    last.remove()
+
+</script>
+</html>
