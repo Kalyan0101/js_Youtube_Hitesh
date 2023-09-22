@@ -50,7 +50,7 @@ const p = document.createElement('p');
 // variable creation
 let rand = parseInt(Math.random() * 100 +1)
 let preGuess = []
-const guessRem = 1
+let guessRem = 1
 let playGame = true
 
 if(playGame){
@@ -59,27 +59,42 @@ if(playGame){
 
         const inpt = parseInt(userInp.value);
         inptValidate(inpt);
-        console.log("main");
     })
 }
 
 //function section
 function inptValidate(value) {
     if(value === '' || value < 0 && value > 100 || isNaN(value)){
-        showMessage("Please a Enter Valid Number");
-        return false
-
+        showMessage("Please enter a valid number");
     }else{
-        return true
+        preGuess.push(value);
+        if(guessRem === 10){
+            showGuess(value);
+            showMessage(`Game Over. Correct number is ${rand}`);
+            endGame();
+        }else{
+            showGuess(value);
+            checkGuess(value);
+        }
     }
 }
 
 function checkGuess(value){
-    //
+    if(value < rand){
+        showMessage(`Number is Too High than ${value}`);
+    }else if(value > rand){
+        showMessage(`Number is Too low than ${value}`);
+    }else{
+        showMessage(`Right Guess.`);
+        endGame();
+    }
 }
 
-function showGuess(message) {
-    //
+function showGuess(guess) {
+    userInp.value = ""
+    preguss.innerHTML += `${guess}  `
+    guessRem++;
+    ramain.innerHTML = `${11 - guessRem}`
 }
 
 function showMessage(message) {
@@ -87,5 +102,13 @@ function showMessage(message) {
     // p.appendChild(document.createTextNode(message));
     // msg.appendChild(p)
 
-    msg.innerHTML = message;
+    msg.innerHTML = `<h2> ${message} </h2>`;
+}
+
+function endGame(){
+    
+}
+
+function newGame(){
+    //
 }
