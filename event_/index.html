@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" class="clicked"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    // types, timeStamp, defaultPrevent
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode
+{
+    // document.querySelector("#images").addEventListener('click', (e) => {
+    //     console.log('outer');
+    // }, false)
+
+    // document.querySelector("#owl").addEventListener('click', (e) => {
+    //     console.log('inner');
+    //     e.stopPropagation() //stop propagation fetures
+    // }, false)
+}
+    //event propagation types -> 
+        // (1) Event Bubling (Default) or when 'false'
+                //  inner to outer
+        // (2) Event Capturing when 'true'
+                // outer to inner
+
+    document.getElementById('google').addEventListener('click', (e) =>{
+        e.preventDefault();
+        console.log('clicked on google');
+        e.stopPropagation();
+    }, false)
+
+    document.querySelector('#images').addEventListener('click', (e) =>{
+
+        // let removeElement = e.target.parentNode;
+        //     removeElement.remove() 
+                        // ************* another method **********
+        // removeElement.parentNode.removeChild(removeElement)
+
+        if (e.target.tagName === 'IMG') {
+            
+            console.dir(e.target.id);
+            // console.dir(e.target.className);
+
+            let removeElement = e.target.parentNode;
+            removeElement.remove()
+
+        }else{
+            console.log('Invalid');
+        }
+
+    }, false)
+
+</script>
+</html>
