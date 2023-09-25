@@ -21,7 +21,7 @@ start.addEventListener('click', (e) => {
         intervelId = setInterval(() => {
             let value = color()
             body.style.backgroundColor = value;
-            // console.log(value);
+            console.log(value);
         }, 1000)
     }
     e.stopPropagation();

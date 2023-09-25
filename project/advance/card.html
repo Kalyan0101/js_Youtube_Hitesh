@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #212121;
+        }
+        a{
+            color: #fff;
+        }
+        #card{
+            background-color: #7DF5E2;
+            width: 60%;
+
+            margin: auto;
+            padding: 5px;
+
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            /* border: 2px dashed #fff; */
+            border-radius: 10px;
+        }
+        #card img{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        #card p{
+            margin: 2px;
+            padding: 0;
+
+            width: 100%;
+            background-color: gray;
+            color: #fff;
+
+            font-size: 2rem;
+            text-align: center;
+
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="card"></div>
+    <button id="btn">Fetch</button>
+</body>
+<script src="./script.js"></script>
+</html>
